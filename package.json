@@ -1,0 +1,16 @@
+{
+  "name": "mofashion",
+  "version": "1.0.0",
+  "description": "A less styled website",
+  "main": "index.js",
+  "scripts": {
+   
+    "build:css": "lessc styles/less/styles.less > css/styles.css"
+  },
+  
+  "devDependencies": {
+    "less": "^3.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,178 @@
+@import "./_nav-bar.less";
+
+
+// Variables
+
+@light: #f7f7f7;
+@dark: #231223;
+@purple: #946994;
+@pink: salmon;
+@red: crimson;
+
+
+@size: 2.4rem;
+@font-stack: "Avenir", sans-serif;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+}
+
+body {
+    font-family: @font-stack;
+}
+
+//Namespaces
+
+#alignment() {
+    //  Mixins
+
+    .align-center {
+        display: flex;
+        align-items: center;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+}
+
+.remove-underline {
+    text-decoration: none;
+}
+
+
+// maps
+#size() {
+    fullH: 100%;
+    fullW: 100%;
+}
+
+
+// Escaping
+@max768: ~"(max-width: 768px)";
+@max280: ~"(max-width: 280px)";
+
+
+
+// Hero Section CSS
+
+.hero {
+    background-color: @light;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        margin: 0 auto;
+        height: 90vh;
+        z-index: 1;
+        width: #size[fullW];
+        max-width: 1200px;
+        padding-right: 24px;
+        padding-left: 24px;
+
+        @media screen and @max768 {
+            grid-template-columns: 1fr;
+            height: #size[fullH];
+
+        }
+
+        &--left {
+            width: #size[fullW];
+            line-height: 1.2;
+
+            @media screen and @max768 {
+                padding: 5rem 0;
+            }
+
+            @media screen and @max280 {
+                line-height: 1.5;
+            }
+        }
+
+        &--left h1 {
+            font-size: 4rem;
+            color: @purple;
+
+            // scope
+            padding-bottom: @size;
+
+            @media screen and @max280 {
+                font-size: 1.5rem;
+            }
+        }
+
+        &--left h2 {
+            font-size: 3.6rem;
+            color: @dark;
+
+            @media screen and @max280 {
+                font-size: 2rem;
+            }
+        }
+
+        &--left p {
+            font-size: 2rem;
+            color: @dark;
+            margin-top: 1rem;
+            font-weight: 400;
+
+            padding-bottom: @size;
+
+
+            @media screen and @max280 {
+                font-size: 1.5rem;
+            }
+        }
+
+        &--btn {
+            font-size: 1rem;
+            background-color: @purple;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            color: @light;
+            margin-top: 2rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        &--btn a {
+            position: relative;
+            z-index: 2;
+            color: @light;
+            text-decoration: none;
+        }
+
+        &--btn::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 0;
+            height: #size[fullH];
+            background: @pink;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        &--btn:hover::after {
+            width: #size[fullW];
+
+        }
+
+        &--right {
+            text-align: center;
+        }
+
+        &--img {
+            height: #size[fullH];
+            width: #size[fullW];
+        }
+    }
+}
