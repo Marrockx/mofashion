@@ -1,6 +1,3 @@
-@import "./_nav-bar.less";
-
-
 // Variables
 
 @light: #f7f7f7;
@@ -9,9 +6,8 @@
 @pink: salmon;
 @red: crimson;
 
-
 @size: 2.4rem;
-@font-stack: "Avenir", sans-serif;
+@font-stack: 'Avenir', sans-serif;
 
 * {
     box-sizing: border-box;
@@ -43,19 +39,89 @@ body {
     text-decoration: none;
 }
 
-
 // maps
 #size() {
-    fullH: 100%;
-    fullW: 100%;
+    fullh: 100%;
+    fullw: 100%;
 }
 
-
 // Escaping
-@max768: ~"(max-width: 768px)";
-@max280: ~"(max-width: 280px)";
+@max768: ~'(max-width: 768px)';
+@max280: ~'(max-width: 280px)';
 
+// Nav-bar styling
 
+.nav--bar {
+    background: @light;
+    height: 92px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem calc((100vw - 1200px) / 2);
+    z-index: 100;
+    position: relative;
+
+    &__logo {
+        color: @dark;
+        .remove-underline();
+        cursor: pointer;
+
+        font-size: 1.8rem;
+        margin-left: 1.5rem;
+        #alignment.align-center();
+    }
+
+    &__bars {
+        opacity: 0;
+
+        @media screen and @max768 {
+            color: @dark;
+            opacity: 1;
+            position: absolute;
+            top: 22px;
+            right: 20px;
+            font-size: 2rem;
+        }
+    }
+
+    &__menu {
+        #alignment.align-center();
+        list-style: none;
+        text-align: center;
+        margin-right: 24px;
+
+        @media screen and (@max768) {
+            display: none;
+        }
+
+        &--links {
+            color: @dark;
+            #alignment.align-center();
+            #alignment.justify-center();
+            .remove-underline();
+            padding: 0 1rem;
+
+            &:hover {
+                color: @purple;
+                transition: all 0.3s ease;
+            }
+        }
+
+        #button {
+            padding: 12px 24px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            background: @purple;
+            margin-left: 16px;
+            color: @light;
+
+            &:hover {
+                background: @pink;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+}
 
 // Hero Section CSS
 
@@ -70,19 +136,18 @@ body {
         margin: 0 auto;
         height: 90vh;
         z-index: 1;
-        width: #size[fullW];
+        width: #size[fullw];
         max-width: 1200px;
         padding-right: 24px;
         padding-left: 24px;
 
         @media screen and @max768 {
             grid-template-columns: 1fr;
-            height: #size[fullH];
-
+            height: #size[fullh];
         }
 
         &--left {
-            width: #size[fullW];
+            width: #size[fullw];
             line-height: 1.2;
 
             @media screen and @max768 {
@@ -123,7 +188,6 @@ body {
 
             padding-bottom: @size;
 
-
             @media screen and @max280 {
                 font-size: 1.5rem;
             }
@@ -151,19 +215,18 @@ body {
 
         &--btn::after {
             position: absolute;
-            content: "";
+            content: '';
             top: 0;
             left: 0;
             width: 0;
-            height: #size[fullH];
+            height: #size[fullh];
             background: @pink;
             transition: all 0.3s;
             border-radius: 4px;
         }
 
         &--btn:hover::after {
-            width: #size[fullW];
-
+            width: #size[fullw];
         }
 
         &--right {
@@ -171,8 +234,8 @@ body {
         }
 
         &--img {
-            height: #size[fullH];
-            width: #size[fullW];
+            height: #size[fullh];
+            width: #size[fullw];
         }
     }
 }
